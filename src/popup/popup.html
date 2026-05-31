@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neflix Cat</title>
+    <link rel="stylesheet" href="./popup.css" />
+  </head>
+  <body>
+    <main class="popup">
+      <h1 data-i18n="popup.title">Neflix Cat</h1>
+
+      <section class="section">
+        <h2 data-i18n="popup.system">System</h2>
+        <label class="toggle-row" for="system-toggle">
+          <span data-i18n="popup.enableExtension">Enable extension on Netflix</span>
+          <input id="system-toggle" type="checkbox" />
+        </label>
+        <label class="toggle-row" for="auto-scroll-toggle">
+          <span data-i18n="popup.autoScrollScan">Auto scrolling for scan</span>
+          <input id="auto-scroll-toggle" type="checkbox" />
+        </label>
+      </section>
+
+      <section class="section">
+        <h2 data-i18n="common.language">Language</h2>
+        <select id="language-select">
+          <option value="en" data-i18n="common.english">English</option>
+          <option value="zh_HK" data-i18n="common.traditionalChineseHongKong">
+            繁體中文
+          </option>
+        </select>
+      </section>
+
+      <section class="section" data-requires-system>
+        <h2 data-i18n="popup.createCategory">Create Category</h2>
+        <form id="create-category-form">
+          <input
+            id="category-name-input"
+            type="text"
+            placeholder="Category name"
+            maxlength="40"
+            required
+            data-i18n-placeholder="popup.categoryNamePlaceholder"
+          />
+          <input id="category-color-input" type="color" value="#e50914" />
+          <button type="submit" data-i18n="popup.add">Add</button>
+        </form>
+      </section>
+
+      <section class="section" data-requires-system>
+        <h2 data-i18n="popup.categories">Categories</h2>
+        <ul id="categories-list"></ul>
+      </section>
+
+      <section class="section section-actions" data-requires-system>
+        <h2 data-i18n="popup.data">Data</h2>
+        <button id="export-button" type="button" data-i18n="popup.exportJson">Export JSON</button>
+        <label class="import-label">
+          <span data-i18n="popup.importJson">Import JSON</span>
+          <input id="import-file-input" type="file" accept="application/json" />
+        </label>
+        <button id="reset-button" type="button" class="danger" data-i18n="popup.clearAll">Clear All</button>
+      </section>
+
+      <p id="status-text" role="status"></p>
+    </main>
+
+    <script src="./popup.js"></script>
+  </body>
+</html>

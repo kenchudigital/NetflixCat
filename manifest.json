@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Netflix Cat",
+  "version": "0.1.4",
+  "description": "Beta: Tag Netflix My List videos with custom categories and filter by them. Features may change.",
+  "icons": {
+    "16": "icons/logo.png",
+    "32": "icons/logo.png",
+    "48": "icons/logo.png",
+    "128": "icons/logo.png"
+  },
+  "permissions": ["storage"],
+  "host_permissions": ["https://www.netflix.com/*"],
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Neflix Cat",
+    "default_icon": {
+      "16": "icons/logo.png",
+      "32": "icons/logo.png",
+      "48": "icons/logo.png",
+      "128": "icons/logo.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.netflix.com/*"],
+      "js": ["content/index.js"],
+      "css": ["content/styles.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
