@@ -11,6 +11,8 @@
 A Chrome Extension (Manifest V3 + TypeScript) for Netflix My List.  
 It lets you create custom categories, tag titles, and filter your list quickly.
 
+**[Install from Chrome Web Store](https://chromewebstore.google.com/detail/netflix-cat/boopinhhmaaicjhfogojcefimkpbfbch)**
+
 ## Features
 
 - Create, edit, delete, and reorder categories
