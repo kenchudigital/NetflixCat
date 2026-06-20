@@ -1,6 +1,6 @@
 import { SCHEMA_VERSION } from "../shared/constants";
 import { detectDefaultLocale, normalizeLocalePreference } from "../i18n";
-import type { Category, ExtensionData, UiPreferences, VideoMeta } from "../shared/types";
+import type { Category, ExtensionData, GridCardSize, UiPreferences, VideoMeta } from "../shared/types";
 import { createEmptyData } from "./schema";
 
 function sanitizeCategories(raw: unknown): Category[] {
@@ -77,9 +77,22 @@ function sanitizeVideoMetaMap(raw: unknown): Record<string, VideoMeta> {
   return result;
 }
 
+function normalizeGridCardSize(raw: unknown): GridCardSize {
+  if (raw === "sm" || raw === "md" || raw === "lg") {
+    return raw;
+  }
+  return "md";
+}
+
 function sanitizeUiPreferences(raw: unknown): UiPreferences {
   if (typeof raw !== "object" || raw === null) {
-    return { editMode: true, systemEnabled: true, autoScrollScan: false, locale: detectDefaultLocale() };
+    return {
+      editMode: true,
+      systemEnabled: true,
+      autoScrollScan: false,
+      gridCardSize: "md",
+      locale: detectDefaultLocale()
+    };
   }
 
   const candidate = raw as Partial<UiPreferences>;
@@ -87,6 +100,7 @@ function sanitizeUiPreferences(raw: unknown): UiPreferences {
     editMode: typeof candidate.editMode === "boolean" ? candidate.editMode : true,
     systemEnabled: typeof candidate.systemEnabled === "boolean" ? candidate.systemEnabled : true,
     autoScrollScan: typeof candidate.autoScrollScan === "boolean" ? candidate.autoScrollScan : false,
+    gridCardSize: normalizeGridCardSize(candidate.gridCardSize),
     locale: normalizeLocalePreference(candidate.locale)
   };
 }

@@ -1,0 +1,159 @@
+:root {
+  --bg: #111;
+  --surface: #181818;
+  --border: #2d2d2d;
+  --text: #e5e5e5;
+  --text-muted: #b3b3b3;
+  --accent: #e50914;
+  --link: #f5c518;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.privacy-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.privacy-back {
+  display: inline-flex;
+  align-items: center;
+  color: var(--link);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: 28px;
+}
+
+.privacy-back:hover {
+  text-decoration: underline;
+}
+
+.privacy-header {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.privacy-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  background: var(--surface);
+  object-fit: contain;
+}
+
+.privacy-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 8px;
+}
+
+.privacy-subtitle {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.privacy-meta {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.privacy-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-bottom: 20px;
+}
+
+.privacy-card h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 12px;
+}
+
+.privacy-card h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--link);
+  margin: 16px 0 8px;
+}
+
+.privacy-card p {
+  margin: 0 0 10px;
+}
+
+.privacy-card p:last-child {
+  margin-bottom: 0;
+}
+
+.privacy-card ul {
+  margin: 8px 0 0 1.2em;
+  padding: 0;
+}
+
+.privacy-card li {
+  margin-bottom: 6px;
+}
+
+.privacy-highlight {
+  color: #fff;
+  font-weight: 500;
+}
+
+.privacy-note {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.privacy-lang-divider {
+  margin: 40px 0 24px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--link);
+  letter-spacing: 0.08em;
+}
+
+.privacy-contact a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+.privacy-contact a:hover {
+  text-decoration: underline;
+}
+
+code {
+  font-size: 0.92em;
+  background: #222;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+@media (min-width: 580px) {
+  .privacy-wrap {
+    padding: 64px 32px 96px;
+  }
+}

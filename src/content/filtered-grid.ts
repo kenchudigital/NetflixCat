@@ -1,7 +1,7 @@
 import { ensureFilteredGridPlacement } from "./mount-points";
 import { getEffectiveLocale, t } from "../i18n";
 import { NETFLIX_SELECTORS, NETFLIX_WATCH_URL_PREFIX, UI_CLASSNAMES } from "../shared/constants";
-import type { ExtensionData, NetflixCardInfo } from "../shared/types";
+import type { ExtensionData, GridCardSize, NetflixCardInfo } from "../shared/types";
 
 type ToggleHandler = (videoId: string, categoryId: string) => void;
 type AssignHandler = (videoId: string, categoryId: string) => void;
@@ -15,6 +15,26 @@ export interface FilteredGridHandlers {
   onClearVideoCategories: ClearVideoHandler;
   onRemoveVideo: RemoveVideoHandler;
   onClearOrphanVideos: ClearOrphanHandler;
+}
+
+function gridSizeClassName(size: GridCardSize): string {
+  switch (size) {
+    case "sm":
+      return UI_CLASSNAMES.gridSizeSm;
+    case "lg":
+      return UI_CLASSNAMES.gridSizeLg;
+    default:
+      return UI_CLASSNAMES.gridSizeMd;
+  }
+}
+
+function applyGridSizeClass(element: HTMLElement, size: GridCardSize): void {
+  element.classList.remove(
+    UI_CLASSNAMES.gridSizeSm,
+    UI_CLASSNAMES.gridSizeMd,
+    UI_CLASSNAMES.gridSizeLg
+  );
+  element.classList.add(gridSizeClassName(size));
 }
 
 function watchUrl(videoId: string): string {
@@ -476,6 +496,13 @@ export function renderFilteredGrid(
 
   const orphanEntries = getOrphanEntries(visibleVideoIds, selectedCategoryIds, data);
   renderOrphanSection(orphanSection, orphanEntries, data, handlers);
+
+  const gridSize = data.ui.gridCardSize ?? "md";
+  applyGridSizeClass(grid, gridSize);
+  const orphanGrid = orphanSection.querySelector<HTMLElement>(`.${UI_CLASSNAMES.orphanGrid}`);
+  if (orphanGrid) {
+    applyGridSizeClass(orphanGrid, gridSize);
+  }
 
   const shouldHideContainer = !showMainGrid && orphanEntries.length === 0;
   container.classList.toggle(UI_CLASSNAMES.settingsPanelHidden, shouldHideContainer);

@@ -2,6 +2,8 @@ export type AppLocale = "en" | "zh_HK";
 
 export type LocalePreference = AppLocale;
 
+export type GridCardSize = "sm" | "md" | "lg";
+
 export interface Category {
   id: string;
   name: string;
@@ -13,6 +15,7 @@ export interface UiPreferences {
   editMode: boolean;
   systemEnabled: boolean;
   autoScrollScan: boolean;
+  gridCardSize: GridCardSize;
   locale: LocalePreference;
 }
 

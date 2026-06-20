@@ -154,6 +154,18 @@ chrome.runtime.onMessage.addListener(
             await broadcastDataUpdated();
             return;
           }
+          case "SET_GRID_CARD_SIZE": {
+            const data = await updateData((current) => ({
+              ...current,
+              ui: {
+                ...current.ui,
+                gridCardSize: message.payload.size
+              }
+            }));
+            sendResponse(ok(data));
+            await broadcastDataUpdated();
+            return;
+          }
           case "SET_LOCALE": {
             const data = await updateData((current) => ({
               ...current,

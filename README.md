@@ -21,6 +21,12 @@ It lets you create custom categories, tag titles, and filter your list quickly.
 - Reset all extension data
 - Supports `en` and `zh_HK` UI locale
 
+## Privacy Policy
+
+https://kenchudigital.github.io/NetflixCat/privacy/
+
+Hosted from `docs/privacy/` via GitHub Pages (enable **Deploy from branch → /docs** in repo settings).
+
 ## How It Works
 
 - Content script is injected on `https://www.netflix.com/*`
@@ -63,8 +69,8 @@ Before release, update all three files to the same version:
 ## Release
 
 ```bash
-git tag v0.1.3
-git push origin v0.1.3
+git tag v0.1.5
+git push origin v0.1.5
 ```
 
 Then create a GitHub release manually and upload `dist.zip`.
@@ -82,5 +88,6 @@ Then create a GitHub release manually and upload `dist.zip`.
 - v0.1.0 - initial
 - v0.1.1 - fix: logic in Non-MyList page
 - v0.1.2 - feat: edit category name and category order
-- v0.1.3 - [HERE] feat: optimise in-site navigation 
-- v0.1.4 - FIX: OLD UI ISSUE; feat: handle the case that if loading video more than 99. (first-load) 
+- v0.1.3 - feat: optimise in-site navigation
+- v0.1.4 - FIX: OLD UI ISSUE; feat: handle the case that if loading video more than 99. (first-load)
+- v0.1.5 - feat: global grid card size selector (small / medium / large) in popup 

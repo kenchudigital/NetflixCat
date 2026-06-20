@@ -12,6 +12,7 @@ const languageSelect = document.querySelector<HTMLSelectElement>("#language-sele
 const resetButton = document.querySelector<HTMLButtonElement>("#reset-button");
 const systemToggle = document.querySelector<HTMLInputElement>("#system-toggle");
 const autoScrollToggle = document.querySelector<HTMLInputElement>("#auto-scroll-toggle");
+const gridCardSizeSelect = document.querySelector<HTMLSelectElement>("#grid-card-size-select");
 const statusText = document.querySelector<HTMLParagraphElement>("#status-text");
 const systemDependentSections = Array.from(
   document.querySelectorAll<HTMLElement>("[data-requires-system]")
@@ -76,6 +77,9 @@ function renderSystemState(): void {
   }
   if (autoScrollToggle && currentData) {
     autoScrollToggle.checked = currentData.ui.autoScrollScan;
+  }
+  if (gridCardSizeSelect && currentData) {
+    gridCardSizeSelect.value = currentData.ui.gridCardSize;
   }
 
   for (const section of systemDependentSections) {
@@ -490,6 +494,34 @@ async function handleAutoScrollToggle(): Promise<void> {
   );
 }
 
+async function handleGridCardSizeChange(): Promise<void> {
+  if (!gridCardSizeSelect) {
+    return;
+  }
+
+  const size = gridCardSizeSelect.value;
+  if (size !== "sm" && size !== "md" && size !== "lg") {
+    return;
+  }
+
+  const response = await sendMessage<ExtensionData>({
+    type: "SET_GRID_CARD_SIZE",
+    payload: { size }
+  });
+
+  if (!response.ok) {
+    setStatus(response.error);
+    return;
+  }
+
+  currentData = response.data;
+  renderLanguageState();
+  renderStaticText();
+  renderSystemState();
+  renderCategories();
+  setLocalizedStatus("popup.status.gridCardSizeUpdated");
+}
+
 async function handleLanguageChange(): Promise<void> {
   if (!languageSelect) {
     return;
@@ -557,6 +589,12 @@ if (systemToggle) {
 if (autoScrollToggle) {
   autoScrollToggle.addEventListener("change", () => {
     void handleAutoScrollToggle();
+  });
+}
+
+if (gridCardSizeSelect) {
+  gridCardSizeSelect.addEventListener("change", () => {
+    void handleGridCardSizeChange();
   });
 }
 

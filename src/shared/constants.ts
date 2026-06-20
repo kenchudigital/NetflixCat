@@ -39,6 +39,9 @@ export const UI_CLASSNAMES = {
   filteredGridCard: "nmc-filtered-grid-card",
   orphanSection: "nmc-orphan-section",
   orphanGrid: "nmc-orphan-grid",
+  gridSizeSm: "nmc-grid-size-sm",
+  gridSizeMd: "nmc-grid-size-md",
+  gridSizeLg: "nmc-grid-size-lg",
   originalGalleryHidden: "nmc-original-gallery-hidden",
   hiddenByFilter: "nmc-hidden-by-filter",
   suspendPreview: "nmc-suspend-preview"

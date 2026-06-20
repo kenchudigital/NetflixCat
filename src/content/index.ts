@@ -371,7 +371,8 @@ function buildRenderKey(
     useCustomUi ? "custom-1" : "custom-0",
     cardIds,
     String(data.updatedAt),
-    data.ui.editMode ? "1" : "0"
+    data.ui.editMode ? "1" : "0",
+    data.ui.gridCardSize ?? "md"
   ].join("::");
 }
 

@@ -1,4 +1,4 @@
-import type { ExtensionData, LocalePreference } from "../shared/types";
+import type { ExtensionData, GridCardSize, LocalePreference } from "../shared/types";
 
 export type ExtensionRequest =
   | { type: "GET_ALL_DATA" }
@@ -15,6 +15,7 @@ export type ExtensionRequest =
   | { type: "SET_EDIT_MODE"; payload: { enabled: boolean } }
   | { type: "SET_SYSTEM_ENABLED"; payload: { enabled: boolean } }
   | { type: "SET_AUTO_SCROLL_SCAN"; payload: { enabled: boolean } }
+  | { type: "SET_GRID_CARD_SIZE"; payload: { size: GridCardSize } }
   | { type: "SET_LOCALE"; payload: { locale: LocalePreference } }
   | { type: "IMPORT_DATA"; payload: { json: string } }
   | { type: "EXPORT_DATA" }

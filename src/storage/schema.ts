@@ -12,6 +12,7 @@ export function createEmptyData(): ExtensionData {
       editMode: true,
       systemEnabled: true,
       autoScrollScan: false,
+      gridCardSize: "md",
       locale: detectDefaultLocale()
     },
     updatedAt: Date.now()

@@ -50,6 +50,7 @@ await Promise.all([
 ]);
 
 await safeCopy("manifest.json", "manifest.json");
+await safeCopy("_locales", "_locales");
 await safeCopy("src/popup/popup.html", "popup/popup.html");
 await safeCopy("src/popup/popup.css", "popup/popup.css");
 await safeCopy("src/content/styles.css", "content/styles.css");
