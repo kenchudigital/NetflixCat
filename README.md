@@ -71,8 +71,8 @@ Before release, update all three files to the same version:
 ## Release
 
 ```bash
-git tag v0.1.5
-git push origin v0.1.5
+git tag v0.1.6
+git push origin v0.1.6
 ```
 
 Then create a GitHub release manually and upload `dist.zip`.
@@ -93,3 +93,4 @@ Then create a GitHub release manually and upload `dist.zip`.
 - v0.1.3 - feat: optimise in-site navigation
 - v0.1.4 - FIX: OLD UI ISSUE; feat: handle the case that if loading video more than 99. (first-load)
 - v0.1.5 - feat: global grid card size selector (small / medium / large) in popup 
+- v0.1.6 - fix: keep filter bar mounted after returning to My List

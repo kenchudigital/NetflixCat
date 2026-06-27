@@ -1,6 +1,6 @@
 {
   "name": "neflix-cat",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": true,
   "description": "Chrome extension demo for tagging Netflix My List items with custom categories.",
   "scripts": {
