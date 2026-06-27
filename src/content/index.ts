@@ -477,6 +477,9 @@ function refreshCards(selectedCategoryIds: string[]): void {
     return;
   }
 
+  activateExtensionUi();
+  filterBar?.remount();
+
   const cards = getNetflixCards();
   const hasFilter = selectedCategoryIds.length > 0;
   const useCustomUi = hasFilter || currentData.ui.editMode;
@@ -504,7 +507,6 @@ function remountExtensionUi(): void {
     deactivateExtensionUi();
     return;
   }
-  filterBar?.remount();
   refreshForCurrentSelection();
 }
 
